@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inference-service-bench"
+version = "0.1.0"
+description = "A production-shaped inference service (ONNX Runtime image classifier with micro-batching, plus an LLM completion gateway that measures time-to-first-token) and the load generator that benchmarks it."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Sergen Şahin" }]
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+  "onnxruntime>=1.17",
+  "numpy>=1.26",
+  "pillow>=10",
+  "python-multipart>=0.0.9",
+  "httpx>=0.27",
+  "prometheus-client>=0.20",
+  "pydantic>=2.6",
+  "pydantic-settings>=2.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5", "onnx>=1.15", "psutil>=5.9"]
+
+[project.scripts]
+infer-bench = "infer_service.bench.loadgen:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

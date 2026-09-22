@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-09-22T21:14:52+00:00",
+  "mode": "vision",
+  "url": "http://localhost:8004",
+  "label": "intra_op_threads=1 (1-CPU pod shape), batch_max=1 (no batching)",
+  "machine": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9",
+    "cpu": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel"
+  },
+  "levels": [
+    {
+      "concurrency": 1,
+      "duration_s": 10.0,
+      "requests": 725,
+      "errors": 0,
+      "rps": 72.5,
+      "latency_ms": {
+        "p50": 12.7,
+        "p95": 23.3,
+        "p99": 25.6,
+        "mean": 13.8
+      },
+      "avg_batch_size": 1.0,
+      "avg_forward_ms": 3.17,
+      "error_kinds": []
+    },
+    {
+      "concurrency": 16,
+      "duration_s": 10.1,
+      "requests": 1303,
+      "errors": 0,
+      "rps": 129.4,
+      "latency_ms": {
+        "p50": 105.7,
+        "p95": 272.0,
+        "p99": 420.9,
+        "mean": 123.2
+      },
+      "avg_batch_size": 1.0,
+      "avg_forward_ms": 6.12,
+      "error_kinds": []
+    },
+    {
+      "concurrency": 32,
+      "duration_s": 10.3,
+      "requests": 897,
+      "errors": 0,
+      "rps": 87.2,
+      "latency_ms": {
+        "p50": 354.4,
+        "p95": 437.3,
+        "p99": 595.1,
+        "mean": 361.2
+      },
+      "avg_batch_size": 1.0,
+      "avg_forward_ms": 7.12,
+      "error_kinds": []
+    }
+  ]
+}
